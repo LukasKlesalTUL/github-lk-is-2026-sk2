@@ -36,8 +36,26 @@ while (again.ToLower() == "a")
     Console.WriteLine("****************************************************");
 
     // Vstup počáteční hodnoty - špatné řešení 
-    Console.Write("Zadejte první číslo řady: ");
-    int first = int.Parse(Console.ReadLine());
+    //Console.Write("Zadejte první číslo řady: ");
+    //int first = int.Parse(Console.ReadLine());
+
+    //Vstup počáteční hodnoty správné řešení 
+    Console.Write("Zadejte poslední číslo řady (celé číslo): ");
+    int last;
+    while (!int.TryParse(Console.ReadLine(), out last))
+    {
+        Console.Write("Nezadali jste celé číslo řady! Zadejte poslední číslo řady znovu (Celé číslo): ");
+    }
+    //vstup diference s kontrolou kladné hodnoty 
+    Console.Write("zadejte diferenci (kladné celé číslo): ");
+    int step;
+    while (!int.TryParse(Console.ReadLine(), out step) || step <= 0)
+    {
+        Console.Write("Diference musí být kladné číslo! Zadejte diferenci znovu (kladné celé číslo): ");
+    }
+
+
+
 
     // Dotaz na opakování 
     Console.WriteLine();
