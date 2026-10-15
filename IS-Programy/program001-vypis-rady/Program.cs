@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.ComponentModel.Design;
+using System.Data;
 
 Console.WriteLine("NAZDAR. mám hlad");
 
@@ -25,7 +26,13 @@ string again = "a";
 // .ToLower() převede vstup na malá písmena, tak že program bude pokračovat při zadávání, jak malého "a" tak i velkého "A" 
 while (again.ToLower() == "a")
 {
-
+    Console.Clear();
+    Console.WriteLine("****************************************************");
+    Console.WriteLine("********************Vypis řady**********************");
+    Console.WriteLine("****************************************************");
+    Console.WriteLine("*******************Lukáš Klesal*********************");
+    Console.WriteLine("****************************************************");
+    Console.WriteLine("****************************************************");
 
     // Dotaz na opakování 
     Console.WriteLine();
