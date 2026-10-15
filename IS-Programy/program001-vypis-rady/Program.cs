@@ -26,6 +26,7 @@ string again = "a";
 // .ToLower() převede vstup na malá písmena, tak že program bude pokračovat při zadávání, jak malého "a" tak i velkého "A" 
 while (again.ToLower() == "a")
 {
+    //hlavička programu
     Console.Clear();
     Console.WriteLine("****************************************************");
     Console.WriteLine("********************Vypis řady**********************");
@@ -33,6 +34,10 @@ while (again.ToLower() == "a")
     Console.WriteLine("*******************Lukáš Klesal*********************");
     Console.WriteLine("****************************************************");
     Console.WriteLine("****************************************************");
+
+    // Vstup počáteční hodnoty - špatné řešení 
+    Console.Write("Zadejte první číslo řady: ");
+    int first = int.Parse(Console.ReadLine());
 
     // Dotaz na opakování 
     Console.WriteLine();
