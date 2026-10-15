@@ -18,3 +18,5 @@ Console.WriteLine("NAZDAR. mám hlad");
 je víceřádkový komentář*/
 
 //jako první si připravíme smyčku pro opakování programu 
+
+string again = "a";
