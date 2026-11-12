@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\aaa\\github-lk-is-2026-sk2\\IS-Programy\\program003b-obdelnik\\program003b-obdelnik.csproj",
-      "projectName": "program003b-obdelnik",
-      "projectPath": "C:\\aaa\\github-lk-is-2026-sk2\\IS-Programy\\program003b-obdelnik\\program003b-obdelnik.csproj",
+      "projectUniqueName": "C:\\aaa\\github-lk-is-2026-sk2\\IS-Programy\\program003b-pravouhly-trojuhelnik\\program003b-pravouhly-trojuhelnik.csproj",
+      "projectName": "program003b-pravouhly-trojuhelnik",
+      "projectPath": "C:\\aaa\\github-lk-is-2026-sk2\\IS-Programy\\program003b-pravouhly-trojuhelnik\\program003b-pravouhly-trojuhelnik.csproj",
       "packagesPath": "C:\\Users\\Uzivatel\\.nuget\\packages\\",
-      "outputPath": "C:\\aaa\\github-lk-is-2026-sk2\\IS-Programy\\program003b-obdelnik\\obj\\",
+      "outputPath": "C:\\aaa\\github-lk-is-2026-sk2\\IS-Programy\\program003b-pravouhly-trojuhelnik\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Uzivatel\\AppData\\Roaming\\NuGet\\NuGet.Config"
