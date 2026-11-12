@@ -40,12 +40,25 @@ class Program
             // Vnější cyklus počítá řádky (shora dolů)
             for (int i = 1; i <= height; i++)
             {
+                // BARVY: Zjištění sudého/lichého řádku pomocí zbytku po dělení dvěma
+                if (i % 2 != 0) 
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;   // Liché řádky (1, 3, 5...)
+                }
+                else 
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Sudé řádky (2, 4, 6...)
+                }
+
                 // Vnitřní cyklus sází sloupce v aktuálním řádku (zleva doprava)
                 for (int j = 1; j <= width; j++)
                 {
                     Console.Write("* ");
                     Thread.Sleep(TimeSpan.FromMilliseconds(100)); // Efekt animace vykreslování
                 }
+
+                // ZLATÉ PRAVIDLO: Okamžitý návrat do výchozího stavu konzole před odřádkováním
+                Console.ResetColor();
 
                 // Konec řádku -> přesun kurzoru na nový řádek
                 Console.WriteLine();
