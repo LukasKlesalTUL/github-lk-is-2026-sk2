@@ -75,7 +75,6 @@ while (again == "a")
         }
     }
 
-    // Výpis výsledků
     Console.WriteLine("\n");
     Console.WriteLine("============================================");
     Console.WriteLine($"Počet kladných čísel:  {kladna}");
