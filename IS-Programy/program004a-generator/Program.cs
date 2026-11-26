@@ -1,90 +1,108 @@
-﻿string again = "a";
-while (again == "a")
+﻿Console.Clear();
+string again = "a";
+// .ToLower() převede vstup na malá písmena, takže program bude pokračovat při zadávání "a" tak i "A"
+while (again.ToLower() == "a")
 {
+    Console.WriteLine();
     Console.Clear();
-    Console.WriteLine("********************************************");
-    Console.WriteLine("***** Generátor pseudonáhodných čísel ******");
-    Console.WriteLine("********************************************");
-    Console.WriteLine();
+    Console.WriteLine("******************************************");
+    Console.WriteLine("**** Generátor pseudonáhodných čísel *****");
+    Console.WriteLine("******************************************");
+    Console.WriteLine("************** Lukáš Klesal ***************");
+    Console.WriteLine("******************************************");
+    Console.WriteLine("******************************************");
 
-    Console.Write("Zadejte počet generovaných čísel (celé číslo): ");
+    // Vstup pro počet generovaných čísel
+    Console.Write("Zadejte počet generovaných (kladné celé číslo): ");
     int n;
-    while (!int.TryParse(Console.ReadLine(), out n))
+    while (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte počet znovu: ");
+        Console.Write("Nezadali jste celé kladné celé číslo! Zadejte počet čísel znovu: ");
     }
 
+    // Vstup pro dolní mez
     Console.Write("Zadejte dolní mez (celé číslo): ");
-    int dm;
-    while (!int.TryParse(Console.ReadLine(), out dm))
+    int lowerBound;
+    while (!int.TryParse(Console.ReadLine(), out lowerBound))
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte dolní mez znovu: ");
+        Console.Write("Nezadali jste celé číslo! Zadejte dolní mez znovu: ");
     }
 
-    Console.Write("Zadejte horní mez (celé číslo): ");
-    int hm;
-    while (!int.TryParse(Console.ReadLine(), out hm))
+    // Vstup pro horní mez
+    Console.Write("Zadejte horní mez (celé číslo větší nebo rovno hodnotě pro dolní mez): ");
+    int upperBound;
+    while (!int.TryParse(Console.ReadLine(), out upperBound) || upperBound < lowerBound)
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte horní mez znovu: ");
+        Console.Write("Nezadali jste celé číslo nebo je horní mez menší než dolní mez! Zadejte horní mez znovu: ");
     }
 
+    // Rekapitulace zadaných hodnot
     Console.WriteLine();
-    Console.WriteLine("============================================");
-    Console.WriteLine($"Počet čísel: {n}, dolní mez: {dm}, horní mez: {hm}");
-    Console.WriteLine("============================================");
+    Console.WriteLine("==================================");
+    // Výpis zadaných hodnot do jednoho řádku
+    Console.WriteLine($"Počet generovaných čísel: {n}; Dolní mez: {lowerBound}; Horní mez: {upperBound}");
+    Console.WriteLine("==================================");
+    Console.WriteLine();
 
-    // Vytvoření pole a generátoru
+    // Jádro konkrétního algoritmu
     int[] myRandNumbs = new int[n];
     Random randomNumber = new Random();
 
-    // Proměnné pro počítání
-    int kladna = 0;
-    int zaporna = 0;
-    int nulova = 0;
-    int suda = 0;
-    int licha = 0;
+    int positiveCount = 0;
+    int negativeCount = 0;
+    int zeroCount = 0;
+    int evenCount = 0;
+    int oddCount = 0;
 
-    Console.WriteLine("\nNáhodná čísla:");
+    Console.WriteLine("Náhodná čísla:");
     for (int i = 0; i < n; i++)
     {
-        myRandNumbs[i] = randomNumber.Next(dm, hm + 1);
+        myRandNumbs[i] = randomNumber.Next(lowerBound, upperBound + 1);
         Console.Write($"{myRandNumbs[i]}; ");
 
-        // Zjištění kladných, záporných a nulových čísel
+        // Kladná, záporná, nulová
         if (myRandNumbs[i] > 0)
         {
-            kladna++;
+            positiveCount++;
         }
         else if (myRandNumbs[i] < 0)
         {
-            zaporna++;
+            negativeCount++;
         }
         else
         {
-            nulova++;
+            zeroCount++;
         }
 
-        // Zjištění sudých a lichých čísel
+        // Sudá a lichá
         if (myRandNumbs[i] % 2 == 0)
         {
-            suda++;
+            evenCount++;
         }
         else
         {
-            licha++;
+            oddCount++;
         }
     }
 
-    Console.WriteLine("\n");
-    Console.WriteLine("============================================");
-    Console.WriteLine($"Počet kladných čísel:  {kladna}");
-    Console.WriteLine($"Počet záporných čísel: {zaporna}");
-    Console.WriteLine($"Počet nulových čísel:  {nulova}");
-    Console.WriteLine("--------------------------------------------");
-    Console.WriteLine($"Počet sudých čísel:    {suda}");
-    Console.WriteLine($"Počet lichých čísel:   {licha}");
-    Console.WriteLine("============================================");
+    Console.WriteLine();
+    Console.WriteLine();
+    Console.WriteLine("==================================");
+    Console.WriteLine($"Počet kladných čísel:  {positiveCount}");
+    Console.WriteLine($"Počet záporných čísel: {negativeCount}");
+    Console.WriteLine($"Počet nulových čísel:  {zeroCount}");
+    Console.WriteLine("----------------------------------");
+    Console.WriteLine($"Počet sudých čísel:    {evenCount}");
+    Console.WriteLine($"Počet lichých čísel:   {oddCount}");
+    Console.WriteLine("==================================");
+    // Konec jádra konkrétního algoritmu
 
-    Console.WriteLine("\nPro opakování programu stiskněte klávesu a.");
-    again = Console.ReadLine();
+    // Dotaz směrem k uživateli na opakování
+    Console.WriteLine();
+    Console.WriteLine();
+    Console.WriteLine("Pro opakování programu stiskněte klávesu a. Následně potvrďte klávesou Enter. ");
+    Console.WriteLine("Jakokouli jinou klávesou program ukončíte.");
+    Console.WriteLine();
+    Console.Write("Chcete program spustit znovu? ");
+    again = Console.ReadLine() ?? "";
 }

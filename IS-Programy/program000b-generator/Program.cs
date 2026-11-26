@@ -1,52 +1,67 @@
-﻿string again = "a";
-while (again == "a")
+﻿Console.Clear();
+string again = "a";
+// .ToLower() převede vstup na malá písmena, takže program bude pokračovat při zadávání "a" tak i "A"
+while (again.ToLower() == "a")
 {
+    Console.WriteLine();
     Console.Clear();
-    Console.WriteLine("********************************************");
-    Console.WriteLine("***** Generátor pseudonáhodných čísel ******");
-    Console.WriteLine("********************************************");
-    Console.WriteLine();
+    Console.WriteLine("******************************************");
+    Console.WriteLine("**** Generátor pseudonáhodných čísel *****");
+    Console.WriteLine("******************************************");
+    Console.WriteLine("************** Lukáš Klesal ***************");
+    Console.WriteLine("******************************************");
+    Console.WriteLine("******************************************");
 
-    // Načtení vstupů s kontrolou, že uživatel zadal celé číslo
-    Console.Write("Zadejte počet generovaných čísel (celé číslo): ");
+    // Vstup pro počet generovaných čísel
+    Console.Write("Zadejte počet generovaných (kladné celé číslo): ");
     int n;
-    while (!int.TryParse(Console.ReadLine(), out n))
+    while (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte počet znovu: ");
+        Console.Write("Nezadali jste celé kladné celé číslo! Zadejte počet čísel znovu: ");
     }
 
+    // Vstup pro dolní mez
     Console.Write("Zadejte dolní mez (celé číslo): ");
-    int dm;
-    while (!int.TryParse(Console.ReadLine(), out dm))
+    int lowerBound;
+    while (!int.TryParse(Console.ReadLine(), out lowerBound))
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte dolní mez znovu: ");
+        Console.Write("Nezadali jste celé číslo! Zadejte dolní mez znovu: ");
     }
 
-    Console.Write("Zadejte horní mez (celé číslo): ");
-    int hm;
-    while (!int.TryParse(Console.ReadLine(), out hm))
+    // Vstup pro horní mez
+    Console.Write("Zadejte horní mez (celé číslo větší nebo rovno hodnotě pro dolní mez): ");
+    int upperBound;
+    while (!int.TryParse(Console.ReadLine(), out upperBound) || upperBound < lowerBound)
     {
-        Console.Write("Nezadali jste celé číslo. Zadejte horní mez znovu: ");
+        Console.Write("Nezadali jste celé číslo nebo je horní mez menší než dolní mez! Zadejte horní mez znovu: ");
     }
 
+    // Rekapitulace zadaných hodnot
     Console.WriteLine();
-    Console.WriteLine("============================================");
-    Console.WriteLine($"Počet čísel: {n}, dolní mez: {dm}, horní mez: {hm}");
-    Console.WriteLine("============================================");
+    Console.WriteLine("==================================");
+    // Výpis zadaných hodnot do jednoho řádku
+    Console.WriteLine($"Počet generovaných čísel: {n}; Dolní mez: {lowerBound}; Horní mez: {upperBound}");
+    Console.WriteLine("==================================");
+    Console.WriteLine();
 
-    // Vytvoření pole a generátoru
+    // Jádro konkrétního algoritmu
     int[] myRandNumbs = new int[n];
     Random randomNumber = new Random();
 
-    Console.WriteLine("\nNáhodná čísla:");
+    Console.WriteLine("Náhodná čísla:");
     for (int i = 0; i < n; i++)
     {
-        myRandNumbs[i] = randomNumber.Next(dm, hm + 1); // hm + 1, aby byla zahrnuta i horní mez
+        myRandNumbs[i] = randomNumber.Next(lowerBound, upperBound + 1);
         Console.Write($"{myRandNumbs[i]}; ");
     }
+    // Konec jádra konkrétního algoritmu
 
+    // Dotaz směrem k uživateli na opakování
     Console.WriteLine();
-    Console.WriteLine("\nPro opakování programu stiskněte klávesu a.");
-    again = Console.ReadLine();
-    
+    Console.WriteLine();
+    Console.WriteLine("Pro opakování programu stiskněte klávesu a. Následně potvrďte klávesou Enter. ");
+    Console.WriteLine("Jakokouli jinou klávesou program ukončíte.");
+    Console.WriteLine();
+    Console.Write("Chcete program spustit znovu? ");
+    again = Console.ReadLine() ?? "";
 }
